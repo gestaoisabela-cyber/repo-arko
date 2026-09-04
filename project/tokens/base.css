@@ -1,0 +1,10 @@
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--size-body-m);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--fw-semibold);letter-spacing:var(--ls-heading);line-height:var(--lh-heading);margin:0}
+h1{font-size:var(--size-display-l);letter-spacing:var(--ls-display);line-height:var(--lh-tight)}h2{font-size:var(--size-display-s)}h3{font-size:var(--size-title-m)}h4{font-size:var(--size-title-s)}
+p{margin:0}
+a{color:var(--text-link);text-decoration:none;transition:color var(--dur-base) var(--ease-standard)}a:hover{color:var(--text-link-hover)}
+strong{font-weight:var(--fw-semibold)}
+.arko-overline{font-family:var(--font-sans);font-size:var(--size-overline);font-weight:var(--fw-semibold);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--text-accent)}
+.arko-numeric{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px}
