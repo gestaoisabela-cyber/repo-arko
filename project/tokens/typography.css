@@ -1,8 +1,12 @@
 :root{
---font-display:'Poppins','Poppins Fallback',system-ui,sans-serif;--font-sans:'IBM Plex Sans','IBM Plex Sans Fallback',system-ui,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;
---fw-regular:400;--fw-medium:500;--fw-semibold:600;--fw-bold:700;
---size-display-xl:64px;--size-display-l:52px;--size-display-m:42px;--size-display-s:34px;--size-title-l:28px;--size-title-m:22px;--size-title-s:19px;--size-body-l:18px;--size-body-m:16px;--size-body-s:14px;--size-caption:13px;--size-overline:12px;
---lh-tight:1.08;--lh-heading:1.18;--lh-snug:1.35;--lh-body:1.6;--lh-loose:1.75;
---ls-display:-0.02em;--ls-heading:-0.01em;--ls-body:0;--ls-overline:0.16em;--ls-logotype:0.32em;
---text-display:var(--font-display);--text-body:var(--font-sans);--text-numeric:var(--font-mono)
+--font-display:'Fraunces','Fraunces Fallback','Times New Roman',Georgia,serif;
+--font-body:'Playfair Display','Playfair Display Fallback','Times New Roman',Georgia,serif;
+--font-script:'Pinyon Script','Snell Roundhand','Apple Chancery',cursive;
+--font-sans:var(--font-body);
+--font-mono:var(--font-body);
+--fw-regular:400;--fw-medium:500;--fw-semibold:600;--fw-bold:700;--fw-black:900;
+--size-display-xl:72px;--size-display-l:56px;--size-display-m:44px;--size-display-s:34px;--size-title-l:28px;--size-title-m:22px;--size-title-s:19px;--size-body-l:18px;--size-body-m:16px;--size-body-s:14px;--size-caption:13px;--size-overline:12px;--size-script-l:56px;--size-script-m:36px;--size-script-s:26px;
+--lh-tight:1.05;--lh-heading:1.18;--lh-snug:1.35;--lh-body:1.6;--lh-loose:1.75;--lh-script:1.1;
+--ls-display:-0.015em;--ls-heading:-0.005em;--ls-body:0;--ls-overline:0.24em;--ls-logotype:0.14em;--ls-caps:0.08em;
+--text-display:var(--font-display);--text-body:var(--font-body);--text-script:var(--font-script)
 }
