@@ -1,0 +1,1417 @@
+<title>Key Visual · Método ARKO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ow:  #F4F1EA;
+  --be:  #D9CBB3;
+  --pe:  #1F3A44;
+  --tc:  #9E5034;
+  --ca:  #9E6B43;
+  --vi:  #722F3C;
+  --gr:  #2E2E2C;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #111;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* DECK */
+.deck {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .45s ease, transform .45s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+.slide.on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* PROGRESS */
+#prog {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--tc);
+  z-index: 999;
+  transition: width .4s ease;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px 0 18px;
+  background: linear-gradient(transparent, rgba(0,0,0,.5));
+}
+.nbtn {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  backdrop-filter: blur(6px);
+  transition: all .2s;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+}
+.nbtn:hover { background: rgba(255,255,255,.18); color: #fff; }
+.nctr {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .14em;
+  min-width: 72px;
+  text-align: center;
+}
+
+/* COMMON SLIDE LABELS */
+.stag {
+  position: absolute;
+  top: 22px; right: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  opacity: .38;
+}
+.snum {
+  position: absolute;
+  bottom: 58px; right: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: .1em;
+  opacity: .25;
+}
+
+/* ARCH SVG UTILITY */
+.arch-svg { display: inline-block; vertical-align: middle; }
+
+/* 4-COL BG TEXTURE (subtle columns) */
+.cols-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+  overflow: hidden;
+}
+.cols-bg span {
+  flex: 1;
+  border-right: 1px solid rgba(255,255,255,.04);
+}
+.cols-bg span:last-child { border-right: none; }
+
+/* PHOTO PLACEHOLDER */
+.photo-ph {
+  background: linear-gradient(160deg, #1a2e36 0%, #0e1c22 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.photo-ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,.012) 2px,
+    rgba(255,255,255,.012) 4px
+  );
+}
+.photo-ph-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* DEVICE MOCKUP */
+.device-mock {
+  background: #0a0a0a;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.08);
+  overflow: hidden;
+}
+</style>
+
+<div id="prog"></div>
+
+<div class="deck" id="deck">
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 01  CAPA
+════════════════════════════════════════════ -->
+<div class="slide on" id="s1" style="background:var(--pe)">
+  <div class="cols-bg">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- vertical accent line -->
+  <div style="position:absolute;top:0;left:72px;width:1px;height:45%;background:rgba(244,241,234,.1)"></div>
+  <div style="position:absolute;top:45%;left:60px">
+    <svg width="24" height="24" viewBox="0 0 60 60" fill="none" style="opacity:.25;color:var(--ow)">
+      <path d="M8,58 L8,28 Q8,4 30,4 Q52,4 52,28 L52,58" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+    </svg>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;
+              padding:0 80px 0 120px;position:relative;z-index:1;height:100vh">
+
+    <div style="margin-bottom:10px">
+      <span style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.26em;
+                   color:rgba(158,80,52,.85);text-transform:uppercase;font-weight:500">
+        PESQUISA &amp; CONCEITO VISUAL
+      </span>
+    </div>
+
+    <div style="font-family:'Fraunces',serif;font-size:clamp(72px,11vw,168px);font-weight:900;
+                line-height:.86;color:var(--ow);letter-spacing:-.02em">
+      MÉTODO<br>ARKO
+    </div>
+
+    <div style="margin-top:26px;width:56px;height:2px;background:var(--tc)"></div>
+
+    <div style="margin-top:18px;font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+                font-size:clamp(15px,1.8vw,22px);color:rgba(244,241,234,.6);letter-spacing:.01em">
+      A estrutura que atravessa o caos.
+    </div>
+
+    <div style="margin-top:60px;font-family:'Inter',sans-serif;font-size:9px;
+                color:rgba(244,241,234,.18);letter-spacing:.22em;text-transform:uppercase">
+      GESTÃO · COMERCIAL · PRODUTO · MARKETING
+    </div>
+  </div>
+
+  <!-- right: 4 vertical bars -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:38%;
+              display:flex;gap:2px;padding:0;pointer-events:none;opacity:.06">
+    <div style="flex:1;background:var(--ow)"></div>
+    <div style="flex:1;background:var(--ow)"></div>
+    <div style="flex:1;background:var(--ow)"></div>
+    <div style="flex:1;background:var(--ow)"></div>
+  </div>
+
+  <!-- bottom tag -->
+  <div style="position:absolute;bottom:22px;left:120px;
+              font-family:'Inter',sans-serif;font-size:9px;
+              color:rgba(244,241,234,.22);letter-spacing:.18em;text-transform:uppercase">
+    KEY VISUAL · V01 · 2026
+  </div>
+
+  <div class="snum" style="color:rgba(244,241,234,.25)">01</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 02  BRIEFING
+════════════════════════════════════════════ -->
+<div class="slide" id="s2" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Briefing</div>
+
+  <div style="display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 3px)">
+    <!-- left panel -->
+    <div style="padding:52px 36px 70px 52px;display:flex;flex-direction:column;
+                justify-content:space-between;border-right:1px solid rgba(46,46,44,.1)">
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;
+                    color:var(--tc);text-transform:uppercase;margin-bottom:14px;font-weight:500">02</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(40px,4.5vw,68px);
+                    font-weight:900;color:var(--pe);line-height:.88">BRIEF<br>ING</div>
+      </div>
+      <svg width="28" height="28" viewBox="0 0 60 60" fill="none" style="opacity:.2;color:var(--pe)">
+        <path d="M8,58 L8,28 Q8,4 30,4 Q52,4 52,28 L52,58" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+      </svg>
+    </div>
+
+    <!-- right panel -->
+    <div style="padding:52px 60px 70px 56px;display:flex;flex-direction:column;justify-content:center;gap:24px;overflow:auto">
+      <div style="width:36px;height:2px;background:var(--tc)"></div>
+
+      <div style="font-family:'Fraunces',serif;font-style:italic;
+                  font-size:clamp(18px,2.2vw,28px);color:var(--pe);font-weight:400;
+                  line-height:1.35;max-width:520px">
+        O Método ARKO é uma metodologia de implementação para empresárias digitais que cresceram mais rápido do que a estrutura de seus negócios.
+      </div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gr);
+                  line-height:1.72;opacity:.72;max-width:490px">
+        A marca comunica estrutura, método, autoridade e clareza sem cair em uma estética empresarial fria. O sistema visual parte da ideia de construção: bases, pilares, módulos, encaixes e espaços que trabalham juntos. A estética é editorial, arquitetônica, humana e contemporânea.
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:490px">
+        <div style="padding:14px 16px;border:1px solid rgba(31,58,68,.14);background:rgba(31,58,68,.03)">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                      text-transform:uppercase;color:var(--tc);margin-bottom:5px;font-weight:600">NEGÓCIO</div>
+          <div style="font-family:'Fraunces',serif;font-size:13px;color:var(--pe)">Método de implementação</div>
+        </div>
+        <div style="padding:14px 16px;border:1px solid rgba(31,58,68,.14);background:rgba(31,58,68,.03)">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                      text-transform:uppercase;color:var(--tc);margin-bottom:5px;font-weight:600">PÚBLICO</div>
+          <div style="font-family:'Fraunces',serif;font-size:13px;color:var(--pe)">Empresárias digitais</div>
+        </div>
+        <div style="padding:14px 16px;border:1px solid rgba(31,58,68,.14);background:rgba(31,58,68,.03)">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                      text-transform:uppercase;color:var(--tc);margin-bottom:5px;font-weight:600">INIMIGO COMUM</div>
+          <div style="font-family:'Fraunces',serif;font-size:13px;color:var(--pe)">O crescimento caótico</div>
+        </div>
+        <div style="padding:14px 16px;border:1px solid rgba(31,58,68,.14);background:rgba(31,58,68,.03)">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                      text-transform:uppercase;color:var(--tc);margin-bottom:5px;font-weight:600">BIG IDEA</div>
+          <div style="font-family:'Fraunces',serif;font-size:13px;color:var(--pe)">A arca para o caos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="snum" style="color:var(--gr)">02</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 03  BRAINSTORM
+════════════════════════════════════════════ -->
+<div class="slide" id="s3" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Brainstorm</div>
+
+  <div style="padding:44px 60px 70px;display:flex;flex-direction:column;height:calc(100vh - 3px)">
+    <div style="margin-bottom:32px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">03</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">BRAINSTORM</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;overflow:hidden">
+
+      <!-- ARKO universe: perfectly aligned -->
+      <div style="display:flex;flex-direction:column;gap:2px;overflow:hidden">
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.15em;text-transform:uppercase;
+                    color:var(--tc);margin-bottom:14px;display:flex;align-items:center;gap:8px;font-weight:600">
+          <span style="display:inline-block;width:18px;height:1px;background:var(--tc)"></span>
+          UNIVERSO ARKO
+        </div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(22px,2.8vw,40px);font-weight:900;color:var(--pe);line-height:1.1">ESTRUTURA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(19px,2.4vw,34px);font-weight:800;color:var(--pe);line-height:1.1">BASE</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(17px,2.1vw,30px);font-weight:700;color:var(--pe);line-height:1.1">SUSTENTAÇÃO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(16px,1.9vw,27px);font-weight:600;color:var(--pe);line-height:1.1">MÉTODO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(15px,1.8vw,25px);font-weight:600;color:var(--pe);line-height:1.15">CONSTRUÇÃO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(14px,1.6vw,22px);font-weight:500;color:var(--pe);line-height:1.15">AUTONOMIA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(13px,1.5vw,21px);font-weight:500;color:var(--pe);line-height:1.15">PREVISIBILIDADE</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(13px,1.4vw,19px);font-weight:400;color:var(--pe);line-height:1.15">DIREÇÃO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(12px,1.3vw,18px);font-weight:400;color:var(--pe);line-height:1.15">ESCALA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(12px,1.2vw,17px);font-weight:300;color:var(--pe);line-height:1.2;opacity:.8">ENCAIXE</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(11px,1.1vw,16px);font-weight:300;color:var(--pe);line-height:1.2;opacity:.7">ARQUITETURA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(11px,1.05vw,15px);font-weight:300;color:var(--pe);line-height:1.2;opacity:.6">FUNDAÇÃO</div>
+      </div>
+
+      <!-- Problem universe: offset, faded -->
+      <div style="display:flex;flex-direction:column;gap:4px;justify-content:center;overflow:hidden">
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.15em;text-transform:uppercase;
+                    color:rgba(158,80,52,.45);margin-bottom:14px;display:flex;align-items:center;gap:8px;font-weight:600">
+          <span style="display:inline-block;width:18px;height:1px;background:rgba(158,80,52,.4)"></span>
+          O QUE A ARKO DISSOLVE
+        </div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(20px,2.5vw,36px);font-weight:700;
+                    color:rgba(158,80,52,.38);line-height:1.15;transform:translateX(12px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.22)">CAOS</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(17px,2.1vw,30px);font-weight:600;
+                    color:rgba(158,80,52,.32);line-height:1.15;transform:translateX(-6px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.18)">IMPROVISO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(15px,1.8vw,26px);font-weight:500;
+                    color:rgba(158,80,52,.28);line-height:1.15;transform:translateX(18px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.15)">DEPENDÊNCIA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(14px,1.6vw,23px);font-weight:500;
+                    color:rgba(158,80,52,.24);line-height:1.15;transform:translateX(-4px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.13)">CENTRALIZAÇÃO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(13px,1.4vw,20px);font-weight:400;
+                    color:rgba(158,80,52,.2);line-height:1.15;transform:translateX(9px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.1)">FRAGMENTAÇÃO</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(12px,1.2vw,18px);font-weight:400;
+                    color:rgba(158,80,52,.17);line-height:1.2;transform:translateX(-2px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.08)">SOBRECARGA</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(11px,1.1vw,16px);font-weight:300;
+                    color:rgba(158,80,52,.14);line-height:1.2;transform:translateX(14px);
+                    text-decoration:line-through;text-decoration-color:rgba(158,80,52,.07)">PERSONALISMO</div>
+      </div>
+    </div>
+  </div>
+  <div class="snum" style="color:var(--gr)">03</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 04  MOODBOARD VISUAL
+════════════════════════════════════════════ -->
+<div class="slide" id="s4" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Moodboard</div>
+
+  <!-- Header -->
+  <div style="padding:32px 60px 20px">
+    <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                text-transform:uppercase;margin-bottom:8px;font-weight:500">04</div>
+    <div style="font-family:'Fraunces',serif;font-size:clamp(26px,3.2vw,48px);
+                font-weight:900;color:var(--pe)">MOODBOARD</div>
+  </div>
+
+  <!-- 2x2 grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+              flex:1;height:calc(100vh - 118px);gap:3px;padding:0 60px 60px">
+
+    <!-- 01 Arquitetura Editorial -->
+    <div style="background:var(--gr);position:relative;overflow:hidden;padding:28px">
+      <!-- architectural lines -->
+      <div style="position:absolute;top:0;left:40px;width:1px;height:100%;background:rgba(255,255,255,.08)"></div>
+      <div style="position:absolute;top:0;left:80px;width:1px;height:100%;background:rgba(255,255,255,.04)"></div>
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06)"></div>
+      <svg style="position:absolute;right:28px;top:50%;transform:translateY(-50%);opacity:.12" width="64" height="64" viewBox="0 0 60 60" fill="none">
+        <path d="M8,58 L8,28 Q8,4 30,4 Q52,4 52,28 L52,58" stroke="white" stroke-width="3" stroke-linecap="square"/>
+      </svg>
+      <div style="position:relative;z-index:1">
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                    color:rgba(255,255,255,.3);margin-bottom:10px;font-weight:500">01</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(16px,2vw,26px);color:rgba(255,255,255,.9);font-weight:700;line-height:1.1">
+          ARQUITETURA<br>EDITORIAL
+        </div>
+        <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,.38);line-height:1.6">
+          Arcos · colunas · vigas · plantas modernistas<br>
+          Estrutura com humanidade
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Editorial Premium -->
+    <div style="background:var(--be);position:relative;overflow:hidden;padding:28px;
+                display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:10px;font-weight:500">02</div>
+        <div style="font-family:'Fraunces',serif;font-size:clamp(16px,2vw,26px);color:var(--pe);font-weight:700;line-height:1.1">
+          EDITORIAL<br>PREMIUM
+        </div>
+        <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.5);line-height:1.6">
+          Revistas de arquitetura · design editorial<br>
+          Espaço negativo · composição suíça
+        </div>
+      </div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(48px,7vw,100px);
+                  font-weight:900;color:rgba(31,58,68,.08);line-height:1;letter-spacing:-.03em">
+        S T R
+      </div>
+    </div>
+
+    <!-- 03 Estrutura Modular -->
+    <div style="background:var(--ow);border:1px solid rgba(31,58,68,.12);
+                position:relative;overflow:hidden;padding:28px">
+      <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                  color:rgba(46,46,44,.4);margin-bottom:10px;font-weight:500">03</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(16px,2vw,26px);color:var(--pe);font-weight:700;line-height:1.1">
+        ESTRUTURA<br>MODULAR
+      </div>
+      <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.5);line-height:1.6">
+        Grids · blocos · encaixes · 4 módulos<br>
+        Sistemas editoriais · composição arquitetônica
+      </div>
+      <!-- 4 modules visual -->
+      <div style="position:absolute;bottom:20px;right:24px;display:flex;gap:4px;align-items:flex-end">
+        <div style="width:14px;height:32px;background:var(--pe);opacity:.7"></div>
+        <div style="width:14px;height:24px;background:var(--tc);opacity:.7"></div>
+        <div style="width:14px;height:28px;background:var(--ca);opacity:.7"></div>
+        <div style="width:14px;height:20px;background:var(--vi);opacity:.7"></div>
+      </div>
+    </div>
+
+    <!-- 04 Humano Tátil -->
+    <div style="background:linear-gradient(135deg,#6b3822 0%,#9E6B43 60%,#D9CBB3 100%);
+                position:relative;overflow:hidden;padding:28px">
+      <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                  color:rgba(244,241,234,.5);margin-bottom:10px;font-weight:500">04</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(16px,2vw,26px);color:var(--ow);font-weight:700;line-height:1.1">
+        HUMANO<br>+ TÁTIL
+      </div>
+      <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:10px;color:rgba(244,241,234,.6);line-height:1.6">
+        Papel · madeira · couro · linho<br>
+        Luz solar · sombras · superfícies foscas
+      </div>
+      <!-- texture hint -->
+      <div style="position:absolute;bottom:0;right:0;width:60%;height:60%;
+                  background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 0,transparent 8px)">
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">04</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 05  PALETA DE CORES
+════════════════════════════════════════════ -->
+<div class="slide" id="s5" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Paleta de Cores</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:36px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">05</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">PALETA DE CORES</div>
+      <div style="margin-top:6px;font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--ca)">
+        Tradição · Método · Calor
+      </div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:12px">
+
+      <!-- PETRÓLEO (primary) -->
+      <div style="display:flex;flex-direction:column">
+        <div style="flex:1;background:var(--pe);position:relative;min-height:120px">
+          <div style="position:absolute;bottom:16px;left:16px">
+            <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                        text-transform:uppercase;color:rgba(244,241,234,.5);font-weight:600">INSTITUCIONAL</div>
+          </div>
+        </div>
+        <div style="padding:12px 0 0">
+          <div style="font-family:'Fraunces',serif;font-size:15px;color:var(--pe);font-weight:700">Petróleo</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.45);margin-top:2px">#1F3A44</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.4);margin-top:4px;line-height:1.4">
+            Logo · títulos · blocos · CTA. A cor que as pessoas vão associar à ARKO.
+          </div>
+        </div>
+      </div>
+
+      <!-- OFF-WHITE -->
+      <div style="display:flex;flex-direction:column">
+        <div style="flex:1;background:var(--ow);border:1px solid rgba(46,46,44,.12);min-height:120px"></div>
+        <div style="padding:12px 0 0">
+          <div style="font-family:'Fraunces',serif;font-size:15px;color:var(--pe);font-weight:700">Off-white</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.45);margin-top:2px">#F4F1EA</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.4);margin-top:4px;line-height:1.4">
+            70% da comunicação. Espaço e clareza.
+          </div>
+        </div>
+      </div>
+
+      <!-- TERRACOTA -->
+      <div style="display:flex;flex-direction:column">
+        <div style="flex:1;background:var(--tc);min-height:120px;position:relative">
+          <div style="position:absolute;top:10px;right:10px;font-family:'Inter',sans-serif;
+                      font-size:7px;letter-spacing:.1em;color:rgba(255,255,255,.4)">CALOR</div>
+        </div>
+        <div style="padding:12px 0 0">
+          <div style="font-family:'Fraunces',serif;font-size:15px;color:var(--pe);font-weight:700">Terracota</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.45);margin-top:2px">#9E5034</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.4);margin-top:4px;line-height:1.4">
+            Marcações, chamadas e acentos. Impede a frieza.
+          </div>
+        </div>
+      </div>
+
+      <!-- CARAMELO -->
+      <div style="display:flex;flex-direction:column">
+        <div style="flex:1;background:var(--ca);min-height:120px"></div>
+        <div style="padding:12px 0 0">
+          <div style="font-family:'Fraunces',serif;font-size:15px;color:var(--pe);font-weight:700">Caramelo</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.45);margin-top:2px">#9E6B43</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.4);margin-top:4px;line-height:1.4">
+            Materialidade e calor tátil.
+          </div>
+        </div>
+      </div>
+
+      <!-- VINHO -->
+      <div style="display:flex;flex-direction:column">
+        <div style="flex:1;background:var(--vi);min-height:120px"></div>
+        <div style="padding:12px 0 0">
+          <div style="font-family:'Fraunces',serif;font-size:15px;color:var(--pe);font-weight:700">Vinho</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.45);margin-top:2px">#722F3C</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;color:rgba(46,46,44,.4);margin-top:4px;line-height:1.4">
+            Uso menor e intencional.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bege e grafite strip -->
+    <div style="margin-top:12px;display:flex;gap:12px">
+      <div style="display:flex;gap:12px;flex:1">
+        <div style="width:80px;height:28px;background:var(--be)"></div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'Fraunces',serif;font-size:12px;color:var(--pe)">Bege #D9CBB3</div>
+          <div style="font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4)">Campos secundários e fundos</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex:1">
+        <div style="width:80px;height:28px;background:var(--gr)"></div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'Fraunces',serif;font-size:12px;color:var(--pe)">Grafite #2E2E2C</div>
+          <div style="font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4)">Texto. Evitar preto puro.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">05</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 06  TIPOGRAFIA
+════════════════════════════════════════════ -->
+<div class="slide" id="s6" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Tipografia</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:36px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">06</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">TIPOGRAFIA</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-rows:1fr auto;gap:24px">
+      <!-- Top: 3 type specimens -->
+      <div style="display:grid;grid-template-columns:2fr 2fr 1fr;gap:20px">
+
+        <!-- Fraunces -->
+        <div style="padding:24px;background:var(--pe);display:flex;flex-direction:column">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                      color:rgba(244,241,234,.38);margin-bottom:14px;font-weight:500">DISPLAY / H1</div>
+          <div style="font-family:'Fraunces',serif;font-size:clamp(36px,5vw,72px);font-weight:900;
+                      color:var(--ow);line-height:.88;letter-spacing:-.02em">
+            Estru<br>tura.
+          </div>
+          <div style="margin-top:auto;padding-top:20px">
+            <div style="font-family:'Fraunces',serif;font-style:italic;font-size:13px;
+                        color:rgba(244,241,234,.5);font-weight:300">
+              Fraunces · Headlines · Conceitos · Frases de impacto
+            </div>
+          </div>
+        </div>
+
+        <!-- Inter -->
+        <div style="padding:24px;border:1px solid rgba(31,58,68,.14);display:flex;flex-direction:column">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                      color:var(--tc);margin-bottom:14px;font-weight:500">FUNCIONAL / BODY</div>
+          <div style="font-family:'Inter',sans-serif;font-size:clamp(13px,1.5vw,18px);font-weight:300;
+                      color:var(--pe);line-height:1.65">
+            O Método ARKO constrói a estrutura capaz de sustentar o crescimento da empresa sem depender da presença constante da fundadora.
+          </div>
+          <div style="margin-top:14px">
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(46,46,44,.45);line-height:1.5">
+              <span style="font-weight:700">700</span> · <span style="font-weight:500">500</span> · <span style="font-weight:400">400</span> · <span style="font-weight:300">300</span>
+            </div>
+          </div>
+          <div style="margin-top:auto;padding-top:16px">
+            <div style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(46,46,44,.4)">
+              Inter · Textos · Subtítulos · Documentos · LP
+            </div>
+          </div>
+        </div>
+
+        <!-- Pinyon Script -->
+        <div style="padding:24px;background:var(--be);display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                      color:rgba(46,46,44,.35);margin-bottom:14px;font-weight:500">ACENTO / 5%</div>
+          <div style="font-family:'Pinyon Script',cursive;font-size:clamp(26px,3vw,44px);
+                      color:var(--pe);line-height:1.2">
+            Sua empresa cresceu.
+          </div>
+          <div style="margin-top:auto;padding-top:16px;font-family:'Inter',sans-serif;
+                      font-size:10px;color:rgba(46,46,44,.4);line-height:1.4">
+            Pinyon Script · Acento editorial. Nunca como tipografia principal.
+          </div>
+        </div>
+      </div>
+
+      <!-- Hierarchy example -->
+      <div style="padding:20px;border-top:1px solid rgba(46,46,44,.1);display:flex;align-items:center;gap:40px">
+        <div>
+          <div style="font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4);letter-spacing:.1em;
+                      text-transform:uppercase;margin-bottom:6px">HIERARQUIA</div>
+          <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:900;color:var(--pe);line-height:1">Método ARKO</div>
+          <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--tc);margin-top:4px;letter-spacing:.05em">A estrutura que atravessa o caos</div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:300;color:rgba(46,46,44,.6);margin-top:4px;line-height:1.6">
+            Gestão · Comercial · Produto · Marketing
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">06</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 07  CONCEITO VISUAL
+════════════════════════════════════════════ -->
+<div class="slide" id="s7" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Conceito Visual</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:36px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">07</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">CONCEITO VISUAL</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px">
+
+      <!-- ROTA 01 (recommended) -->
+      <div style="background:var(--pe);padding:32px;display:flex;flex-direction:column;position:relative">
+        <div style="position:absolute;top:16px;right:16px;font-family:'Inter',sans-serif;font-size:7px;
+                    letter-spacing:.14em;text-transform:uppercase;background:var(--tc);
+                    color:white;padding:3px 8px;font-weight:600">RECOMENDADA</div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                    color:rgba(244,241,234,.35);margin-bottom:6px;font-weight:500">ROTA 01</div>
+        <div style="font-family:'Fraunces',serif;font-size:24px;font-weight:800;color:var(--ow);margin-bottom:16px">
+          A ESTRUTURA
+        </div>
+
+        <!-- Arch + 4 columns diagram -->
+        <div style="display:flex;align-items:flex-end;gap:6px;margin:16px 0 24px">
+          <!-- arch SVG over 4 columns -->
+          <div style="position:relative;display:flex;align-items:flex-end;gap:4px">
+            <!-- arch -->
+            <svg style="position:absolute;top:-10px;left:-4px;right:-4px;width:calc(100% + 8px)"
+                 height="40" viewBox="0 0 120 40" fill="none" preserveAspectRatio="none">
+              <path d="M4,40 L4,20 Q4,4 60,4 Q116,4 116,20 L116,40"
+                    stroke="rgba(244,241,234,0.4)" stroke-width="2" stroke-linecap="square" fill="none"/>
+            </svg>
+            <div style="width:20px;height:48px;background:rgba(244,241,234,.7)"></div>
+            <div style="width:20px;height:56px;background:rgba(158,80,52,.8)"></div>
+            <div style="width:20px;height:44px;background:rgba(158,107,67,.8)"></div>
+            <div style="width:20px;height:52px;background:rgba(114,47,60,.8)"></div>
+          </div>
+        </div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:10.5px;color:rgba(244,241,234,.58);line-height:1.65;flex:1">
+          Quatro módulos sustentados por uma estrutura em arco. As 4 frentes do negócio (Gestão, Comercial, Produto, Marketing) unidas por um sistema. Em alguns momentos se unem; em outros se separam. Nunca fluxograma, sempre linguagem gráfica.
+        </div>
+
+        <!-- Arch symbol as ARKO logo hint -->
+        <div style="margin-top:20px;display:flex;align-items:center;gap:12px">
+          <svg width="32" height="28" viewBox="0 0 60 52" fill="none" style="color:rgba(244,241,234,.5)">
+            <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+          </svg>
+          <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:rgba(244,241,234,.5);letter-spacing:.04em">ARKO</div>
+        </div>
+      </div>
+
+      <!-- ROTA 02 -->
+      <div style="border:1px solid rgba(31,58,68,.14);padding:28px;display:flex;flex-direction:column">
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                    color:var(--tc);margin-bottom:6px;font-weight:500">ROTA 02</div>
+        <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:800;color:var(--pe);margin-bottom:16px">
+          O EIXO
+        </div>
+
+        <!-- Eixo diagram -->
+        <div style="position:relative;height:60px;margin:8px 0 16px">
+          <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:var(--pe);opacity:.5"></div>
+          <div style="position:absolute;top:20%;left:10%;width:18px;height:18px;background:rgba(46,46,44,.2);transform:rotate(12deg)"></div>
+          <div style="position:absolute;top:60%;left:30%;width:14px;height:14px;background:rgba(46,46,44,.2);transform:rotate(-6deg)"></div>
+          <div style="position:absolute;top:15%;left:55%;width:20px;height:20px;background:rgba(46,46,44,.2);transform:rotate(4deg)"></div>
+          <div style="position:absolute;top:55%;left:72%;width:12px;height:12px;background:rgba(46,46,44,.2);transform:rotate(-10deg)"></div>
+        </div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.5);line-height:1.6;flex:1">
+          Uma linha central organiza elementos antes dispersos. Clareza como resposta ao caos. Funciona bem em motion e Reels.
+        </div>
+      </div>
+
+      <!-- ROTA 03 -->
+      <div style="border:1px solid rgba(31,58,68,.14);padding:28px;display:flex;flex-direction:column">
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+                    color:var(--tc);margin-bottom:6px;font-weight:500">ROTA 03</div>
+        <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:800;color:var(--pe);margin-bottom:16px">
+          O ENCAIXE
+        </div>
+
+        <!-- Encaixe diagram -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;height:60px;margin:8px 0 16px">
+          <div style="background:rgba(31,58,68,.2)"></div>
+          <div style="background:rgba(158,80,52,.2)"></div>
+          <div style="background:rgba(158,107,67,.2)"></div>
+          <div style="background:rgba(114,47,60,.2)"></div>
+        </div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.5);line-height:1.6;flex:1">
+          Quatro formas encontram uma configuração estável. Risco maior de parecer consultoria genérica. Terceira opção.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">07</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 08  KV HERO 01 (AUTORIDADE)
+════════════════════════════════════════════ -->
+<div class="slide" id="s8" style="background:var(--pe)">
+  <div class="stag" style="color:rgba(244,241,234,.4)">KV Hero 01</div>
+
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;height:100vh">
+
+    <!-- FOTO placeholder -->
+    <div class="photo-ph" style="min-height:100%">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(31,58,68,0) 60%, rgba(31,58,68,1) 100%)"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+        <svg width="48" height="42" viewBox="0 0 60 52" fill="none" style="color:rgba(244,241,234,.08);display:block;margin:0 auto 12px">
+          <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+        </svg>
+      </div>
+      <div class="photo-label" style="position:absolute;bottom:24px;left:28px;
+                  font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+                  text-transform:uppercase;color:rgba(255,255,255,.18)">
+        FOTOGRAFIA · ISABELA MOURÃO
+      </div>
+    </div>
+
+    <!-- TEXT content -->
+    <div style="display:flex;flex-direction:column;justify-content:center;
+                padding:60px 60px 80px 40px;position:relative">
+
+      <div style="width:28px;height:2px;background:var(--tc);margin-bottom:24px"></div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.22em;
+                  color:rgba(244,241,234,.4);text-transform:uppercase;margin-bottom:16px;font-weight:500">
+        A ESTRUTURA QUE ATRAVESSA O CAOS
+      </div>
+
+      <div style="font-family:'Fraunces',serif;font-size:clamp(36px,5vw,72px);font-weight:900;
+                  color:var(--ow);line-height:.88;letter-spacing:-.01em;margin-bottom:10px">
+        MÉTODO
+      </div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(36px,5vw,72px);font-weight:900;
+                  color:var(--tc);line-height:.88;letter-spacing:-.01em;margin-bottom:28px">
+        ARKO
+      </div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(244,241,234,.45);
+                  line-height:1.6;margin-bottom:32px;max-width:280px">
+        Isabela Mourão · Implementação e estrutura para empresas que cresceram além da fundadora.
+      </div>
+
+      <!-- 4 frentes small -->
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;background:var(--pe);border:1px solid rgba(244,241,234,.3)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;color:rgba(244,241,234,.4);text-transform:uppercase">01 · GESTÃO</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;background:var(--tc)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;color:rgba(244,241,234,.4);text-transform:uppercase">02 · COMERCIAL</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;background:var(--ca)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;color:rgba(244,241,234,.4);text-transform:uppercase">03 · PRODUTO</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;background:var(--vi)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;color:rgba(244,241,234,.4);text-transform:uppercase">04 · MARKETING</div>
+        </div>
+      </div>
+
+      <!-- arch bottom right -->
+      <div style="position:absolute;bottom:60px;right:24px;opacity:.12">
+        <svg width="44" height="38" viewBox="0 0 60 52" fill="none" style="color:var(--ow)">
+          <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:rgba(244,241,234,.2)">08</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 09  KV HERO 02 (EDITORIAL)
+════════════════════════════════════════════ -->
+<div class="slide" id="s9" style="background:var(--ow)">
+  <div class="stag" style="color:var(--gr)">KV Hero 02</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1.1fr;height:100vh">
+
+    <!-- Left: big editorial type -->
+    <div style="padding:60px 40px 80px 60px;display:flex;flex-direction:column;justify-content:center;
+                border-right:1px solid rgba(46,46,44,.08);position:relative">
+
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;
+                  color:var(--tc);text-transform:uppercase;margin-bottom:24px;font-weight:500">
+        EDITORIAL · HERO 02
+      </div>
+
+      <div style="font-family:'Fraunces',serif;font-size:clamp(64px,9vw,130px);font-weight:900;
+                  color:var(--pe);line-height:.86;letter-spacing:-.03em">
+        ESTRU<br>TURA
+      </div>
+
+      <div style="margin:20px 0;width:56px;height:2px;background:var(--tc)"></div>
+
+      <div style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+                  font-size:clamp(15px,1.8vw,22px);color:rgba(46,46,44,.5)">
+        primeiro.
+      </div>
+
+      <!-- ARKO mark small -->
+      <div style="position:absolute;bottom:60px;left:60px;display:flex;align-items:center;gap:10px">
+        <svg width="20" height="18" viewBox="0 0 60 52" fill="none" style="color:var(--pe);opacity:.3">
+          <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+        </svg>
+        <div style="font-family:'Fraunces',serif;font-size:14px;font-weight:900;color:var(--pe);opacity:.3;letter-spacing:.06em">ARKO</div>
+      </div>
+    </div>
+
+    <!-- Right: photo smaller + headline -->
+    <div style="display:flex;flex-direction:column;position:relative;overflow:hidden">
+      <!-- photo placeholder top half -->
+      <div class="photo-ph" style="height:55%;position:relative">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:30%;
+                    background:linear-gradient(transparent, var(--ow))"></div>
+        <div class="photo-ph-label">FOTOGRAFIA · ISABELA MOURÃO</div>
+      </div>
+
+      <!-- text bottom half -->
+      <div style="flex:1;padding:28px 40px 80px 40px;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--gr);
+                    line-height:1.68;opacity:.65;max-width:320px">
+          Sua empresa cresceu. A estrutura ainda não acompanhou. O Método ARKO organiza Gestão, Comercial, Produto e Marketing para criar uma operação previsível, autônoma e segura.
+        </div>
+        <div style="margin-top:16px">
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;
+                      color:var(--tc);text-transform:uppercase;font-weight:600">ISABELA MOURÃO · MÉTODO ARKO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">09</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10  KV HERO 03 (CAMPANHA)
+════════════════════════════════════════════ -->
+<div class="slide" id="s10" style="background:var(--gr)">
+  <div class="stag" style="color:rgba(244,241,234,.35)">KV Hero 03 · Campanha</div>
+
+  <div style="height:100vh;display:flex;flex-direction:column;justify-content:center;
+              padding:60px 120px;position:relative">
+
+    <div class="cols-bg">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div style="position:relative;z-index:1">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.2em;
+                  color:rgba(244,241,234,.25);text-transform:uppercase;margin-bottom:28px;font-weight:500">
+        CAMPANHA · HERO 03
+      </div>
+
+      <div style="font-family:'Fraunces',serif;font-size:clamp(40px,5.5vw,80px);font-weight:300;
+                  color:rgba(244,241,234,.75);line-height:1.1;margin-bottom:8px;font-style:italic">
+        Você cresceu.
+      </div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.8vw,56px);font-weight:300;
+                  color:rgba(244,241,234,.45);line-height:1.1;margin-bottom:48px;font-style:italic">
+        Sua estrutura não acompanhou.
+      </div>
+
+      <div style="width:56px;height:2px;background:var(--tc);margin-bottom:36px"></div>
+
+      <div style="font-family:'Fraunces',serif;font-size:clamp(52px,7vw,110px);font-weight:900;
+                  color:var(--ow);line-height:.88;letter-spacing:-.02em;margin-bottom:32px">
+        MÉTODO ARKO
+      </div>
+
+      <!-- 4 modules as graphic element -->
+      <div style="display:flex;gap:6px;align-items:flex-end;margin-bottom:28px">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.12em;text-transform:uppercase">01</div>
+          <div style="width:60px;height:36px;background:rgba(31,58,68,.8);border:1px solid rgba(31,58,68,1)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.08em">GESTÃO</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.12em;text-transform:uppercase">02</div>
+          <div style="width:60px;height:44px;background:rgba(158,80,52,.7);border:1px solid rgba(158,80,52,.9)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.08em">COMERCIAL</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.12em;text-transform:uppercase">03</div>
+          <div style="width:60px;height:38px;background:rgba(158,107,67,.7);border:1px solid rgba(158,107,67,.9)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.08em">PRODUTO</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.12em;text-transform:uppercase">04</div>
+          <div style="width:60px;height:32px;background:rgba(114,47,60,.7);border:1px solid rgba(114,47,60,.9)"></div>
+          <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(244,241,234,.3);letter-spacing:.08em">MARKETING</div>
+        </div>
+        <!-- arch over -->
+        <div style="position:relative;margin-left:24px">
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none" style="color:rgba(244,241,234,.15)">
+            <path d="M8,58 L8,28 Q8,4 30,4 Q52,4 52,28 L52,58" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          </svg>
+        </div>
+      </div>
+
+      <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(244,241,234,.3);letter-spacing:.08em">
+        Gestão · Comercial · Produto · Marketing
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:rgba(244,241,234,.2)">10</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 11  SISTEMA DAS 4 FRENTES
+════════════════════════════════════════════ -->
+<div class="slide" id="s11" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Sistema das 4 Frentes</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:36px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">11</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">SISTEMA DAS 4 FRENTES</div>
+    </div>
+
+    <!-- 4 columns -->
+    <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;overflow:hidden">
+
+      <div style="background:var(--pe);display:flex;flex-direction:column;padding:24px 20px">
+        <div style="font-family:'Fraunces',serif;font-size:clamp(48px,6vw,88px);font-weight:900;
+                    color:rgba(244,241,234,.15);line-height:1;margin-bottom:auto">01</div>
+        <div>
+          <div style="width:20px;height:2px;background:rgba(244,241,234,.4);margin-bottom:14px"></div>
+          <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:800;color:var(--ow);margin-bottom:8px">GESTÃO</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.1em;
+                      text-transform:uppercase;color:rgba(244,241,234,.35);margin-bottom:14px">A · Avaliar</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(244,241,234,.45);line-height:1.55">
+            Processos, rotinas, organograma e operação interna.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--tc);display:flex;flex-direction:column;padding:24px 20px">
+        <div style="font-family:'Fraunces',serif;font-size:clamp(48px,6vw,88px);font-weight:900;
+                    color:rgba(244,241,234,.15);line-height:1;margin-bottom:auto">02</div>
+        <div>
+          <div style="width:20px;height:2px;background:rgba(244,241,234,.4);margin-bottom:14px"></div>
+          <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:800;color:var(--ow);margin-bottom:8px">COMERCIAL</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.1em;
+                      text-transform:uppercase;color:rgba(244,241,234,.35);margin-bottom:14px">R · Reorganizar</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(244,241,234,.45);line-height:1.55">
+            Funil, conversão, proposta e previsibilidade de receita.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--ca);display:flex;flex-direction:column;padding:24px 20px">
+        <div style="font-family:'Fraunces',serif;font-size:clamp(48px,6vw,88px);font-weight:900;
+                    color:rgba(244,241,234,.15);line-height:1;margin-bottom:auto">03</div>
+        <div>
+          <div style="width:20px;height:2px;background:rgba(244,241,234,.4);margin-bottom:14px"></div>
+          <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:800;color:var(--ow);margin-bottom:8px">PRODUTO</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.1em;
+                      text-transform:uppercase;color:rgba(244,241,234,.35);margin-bottom:14px">K · Konstruir</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(244,241,234,.45);line-height:1.55">
+            Entrega, experiência do cliente e método de valor.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--vi);display:flex;flex-direction:column;padding:24px 20px">
+        <div style="font-family:'Fraunces',serif;font-size:clamp(48px,6vw,88px);font-weight:900;
+                    color:rgba(244,241,234,.15);line-height:1;margin-bottom:auto">04</div>
+        <div>
+          <div style="width:20px;height:2px;background:rgba(244,241,234,.4);margin-bottom:14px"></div>
+          <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:800;color:var(--ow);margin-bottom:8px">MARKETING</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.1em;
+                      text-transform:uppercase;color:rgba(244,241,234,.35);margin-bottom:14px">O · Otimizar</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(244,241,234,.45);line-height:1.55">
+            Comunicação, conteúdo e posicionamento de marca.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arch spanning all 4 -->
+    <div style="height:28px;margin-top:8px;position:relative;display:flex;align-items:center">
+      <svg width="100%" height="28" viewBox="0 0 800 28" preserveAspectRatio="none" fill="none" style="opacity:.15">
+        <path d="M0,28 L0,14 Q400,0 800,14 L800,28" stroke="var(--pe)" stroke-width="2" fill="none"/>
+      </svg>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                  font-family:'Fraunces',serif;font-size:13px;font-weight:900;
+                  color:var(--pe);opacity:.3;letter-spacing:.08em;white-space:nowrap">
+        MÉTODO ARKO
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">11</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 12  REDES SOCIAIS
+════════════════════════════════════════════ -->
+<div class="slide" id="s12" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Redes Sociais</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:28px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">12</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,48px);
+                  font-weight:900;color:var(--pe)">REDES SOCIAIS</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:auto auto auto 1fr;gap:16px;align-items:start;overflow:hidden">
+
+      <!-- STORY 01: Institucional -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:8px">STORY · INSTITUCIONAL</div>
+        <div style="width:120px;height:213px;background:var(--pe);position:relative;overflow:hidden;border-radius:2px">
+          <div style="position:absolute;top:24px;left:16px;right:16px">
+            <svg width="20" height="18" viewBox="0 0 60 52" fill="none" style="color:rgba(244,241,234,.3);margin-bottom:10px;display:block">
+              <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+            </svg>
+            <div style="font-family:'Inter',sans-serif;font-size:7px;letter-spacing:.12em;color:rgba(244,241,234,.4);text-transform:uppercase;margin-bottom:6px">MÉTODO ARKO</div>
+          </div>
+          <div style="position:absolute;bottom:28px;left:16px;right:16px">
+            <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:800;color:var(--ow);line-height:1.05;margin-bottom:8px">
+              Sua empresa cresceu.
+            </div>
+            <div style="font-family:'Inter',sans-serif;font-size:8px;color:var(--tc);line-height:1.4">
+              Sua estrutura ainda não acompanhou.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORY 02: Editorial -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:8px">STORY · EDITORIAL</div>
+        <div style="width:120px;height:213px;background:var(--be);position:relative;overflow:hidden;border-radius:2px">
+          <div class="photo-ph" style="height:55%;background:linear-gradient(135deg,#1a2e36,#2a4856)">
+            <div style="position:absolute;bottom:8px;left:10px;font-family:'Inter',sans-serif;
+                        font-size:6px;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase">FOTO</div>
+          </div>
+          <div style="padding:12px 12px 10px;position:absolute;bottom:0;left:0;right:0;background:var(--be)">
+            <div style="font-family:'Fraunces',serif;font-size:14px;font-weight:800;
+                        color:var(--pe);line-height:1.1;margin-bottom:4px">ESTRUTURA<br>primeiro.</div>
+            <div style="font-family:'Inter',sans-serif;font-size:7px;color:rgba(46,46,44,.4);text-transform:uppercase;letter-spacing:.1em">Método ARKO</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEED square -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:8px">FEED · CAMPANHA</div>
+        <div style="width:180px;height:180px;background:var(--gr);position:relative;overflow:hidden;border-radius:2px">
+          <div class="cols-bg"><span></span><span></span><span></span><span></span></div>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;
+                      justify-content:flex-end;padding:16px;z-index:1">
+            <div style="font-family:'Fraunces',serif;font-style:italic;font-size:13px;font-weight:300;
+                        color:rgba(244,241,234,.55);line-height:1.2;margin-bottom:6px">
+              O problema do seu negócio não é falta de vendas.
+            </div>
+            <div style="font-family:'Fraunces',serif;font-size:16px;font-weight:800;
+                        color:var(--ow);line-height:1.1">
+              É que ele ainda não sabe funcionar sem você.
+            </div>
+            <div style="margin-top:10px;font-family:'Inter',sans-serif;font-size:7px;
+                        color:var(--tc);letter-spacing:.1em;text-transform:uppercase">MÉTODO ARKO</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div style="display:flex;flex-direction:column;gap:12px;padding-left:16px;padding-top:32px">
+        <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:4px">DIRETRIZES</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.55);line-height:1.55">
+          Sempre Fraunces nos títulos principais. Espaço negativo generoso. Petróleo ou Off-white como fundo dominante.
+        </div>
+        <div style="width:24px;height:1px;background:rgba(46,46,44,.15)"></div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.55);line-height:1.55">
+          Terracota como acento de cor em todos os formatos: nunca ausente, nunca dominante.
+        </div>
+        <div style="width:24px;height:1px;background:rgba(46,46,44,.15)"></div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.55);line-height:1.55">
+          O arco aparece discreto em pelo menos um elemento de cada peça.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">12</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 13  AVATAR + DIGITAL
+════════════════════════════════════════════ -->
+<div class="slide" id="s13" style="background:var(--ow)">
+  <div style="height:3px;background:var(--pe)"></div>
+  <div class="stag" style="color:var(--gr)">Avatar + Digital</div>
+
+  <div style="padding:44px 60px 70px;height:calc(100vh - 3px);display:flex;flex-direction:column">
+    <div style="margin-bottom:36px">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.16em;color:var(--tc);
+                  text-transform:uppercase;margin-bottom:8px;font-weight:500">13</div>
+      <div style="font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,52px);
+                  font-weight:900;color:var(--pe)">AVATAR + DIGITAL</div>
+    </div>
+
+    <div style="flex:1;display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:24px;align-items:start">
+
+      <!-- AVATAR 01: Marca -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:10px">AVATAR 01 · MARCA</div>
+        <div style="width:100px;height:100px;background:var(--pe);border-radius:0;
+                    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <svg width="24" height="21" viewBox="0 0 60 52" fill="none" style="color:rgba(244,241,234,.5)">
+            <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+          </svg>
+          <div style="font-family:'Fraunces',serif;font-size:13px;font-weight:900;color:var(--ow);letter-spacing:.08em">ARKO</div>
+        </div>
+        <div style="margin-top:8px;font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4);line-height:1.4">
+          Uso primário.<br>WhatsApp e redes.
+        </div>
+      </div>
+
+      <!-- AVATAR 02: Foto -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:10px">AVATAR 02 · FOTO</div>
+        <div class="photo-ph" style="width:100px;height:100px;background:linear-gradient(135deg,#1a2e36,#2a4856)">
+          <div style="position:absolute;bottom:6px;left:6px;right:6px;
+                      border-bottom:2px solid var(--tc);padding-bottom:4px">
+            <div style="font-family:'Inter',sans-serif;font-size:6px;letter-spacing:.1em;
+                        color:rgba(255,255,255,.4);text-transform:uppercase">ISABELA · ARKO</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4);line-height:1.4">
+          Grupos de evento.<br>Contexto pessoal.
+        </div>
+      </div>
+
+      <!-- AVATAR 03: Terracota -->
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:10px">AVATAR 03 · CAMPANHA</div>
+        <div style="width:100px;height:100px;background:var(--tc);
+                    display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:var(--ow);
+                      line-height:1;letter-spacing:-.02em">A</div>
+          <div style="width:20px;height:1px;background:rgba(244,241,234,.4);margin-top:4px"></div>
+        </div>
+        <div style="margin-top:8px;font-family:'Inter',sans-serif;font-size:8px;color:rgba(46,46,44,.4);line-height:1.4">
+          Lançamentos e<br>campanhas pontuais.
+        </div>
+      </div>
+
+      <!-- Rules + Thumbnail -->
+      <div style="padding-left:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+                    color:rgba(46,46,44,.4);margin-bottom:4px">THUMBNAIL · YOUTUBE</div>
+
+        <!-- Thumbnail mockup -->
+        <div style="width:100%;max-width:280px;aspect-ratio:16/9;background:var(--pe);position:relative;overflow:hidden;border-radius:2px">
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(31,58,68,.1) 0%, rgba(31,58,68,.9) 100%)"></div>
+          <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);max-width:55%">
+            <div style="font-family:'Fraunces',serif;font-size:clamp(11px,2.2vw,15px);font-weight:800;
+                        color:var(--ow);line-height:1.15;margin-bottom:6px">
+              Por que sua empresa ainda depende de você?
+            </div>
+            <div style="font-family:'Inter',sans-serif;font-size:8px;color:var(--tc);
+                        text-transform:uppercase;letter-spacing:.08em">Método ARKO</div>
+          </div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:42%">
+            <div class="photo-ph" style="height:100%;background:linear-gradient(135deg,#0e1c22,#1a2e36)"></div>
+          </div>
+        </div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(46,46,44,.5);line-height:1.55;max-width:280px">
+          A foto da Isabela sempre à esquerda. Título à direita, Fraunces Bold. Terracota como acento de cor. Criar no mínimo duas versões por vídeo.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:var(--gr)">13</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 14  SÍNTESE
+════════════════════════════════════════════ -->
+<div class="slide" id="s14" style="background:var(--pe)">
+  <div class="stag" style="color:rgba(244,241,234,.3)">Síntese do Conceito</div>
+  <div class="cols-bg"><span></span><span></span><span></span><span></span></div>
+
+  <div style="height:100vh;display:flex;flex-direction:column;justify-content:center;
+              padding:60px 120px;position:relative;z-index:1">
+
+    <div style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.2em;
+                color:rgba(244,241,234,.25);text-transform:uppercase;margin-bottom:24px;font-weight:500">
+      14 · SÍNTESE DO CONCEITO
+    </div>
+
+    <div style="width:40px;height:2px;background:var(--tc);margin-bottom:28px"></div>
+
+    <div style="max-width:680px">
+      <div style="display:flex;flex-direction:column;gap:11px">
+
+        <div style="font-family:'Fraunces',serif;font-size:clamp(14px,1.8vw,20px);
+                    color:rgba(244,241,234,.88);line-height:1.35;font-weight:400">
+          ARKO é arquitetura de negócios, não organização.
+        </div>
+        <div style="height:1px;background:rgba(244,241,234,.07)"></div>
+
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          O visual transmite estrutura, sustentação, método e clareza.
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          A linguagem é editorial e arquitetônica: Fraunces + Inter, grandes áreas de espaço negativo, fotografia humana.
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          A paleta parte do off-white e petróleo, aquecida por terracota, caramelo e vinho.
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          O principal código gráfico é o sistema modular das quatro frentes do negócio.
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          Arcos, pilares e encaixes aparecem como metáforas visuais. A arca nunca é representada literalmente.
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.3vw,14px);
+                    color:rgba(244,241,234,.55);line-height:1.6">
+          Isabela aparece como autoridade. Não como o elemento que sustenta visualmente tudo.
+        </div>
+
+        <div style="height:1px;background:rgba(244,241,234,.07);margin:6px 0"></div>
+
+        <div style="font-family:'Fraunces',serif;font-style:italic;font-size:clamp(16px,2vw,24px);
+                    color:rgba(244,241,234,.75);line-height:1.25;font-weight:300">
+          A sensação final: "finalmente alguém colocou estrutura nisso."
+        </div>
+      </div>
+    </div>
+
+    <!-- Arch + ARKO bottom right -->
+    <div style="position:absolute;bottom:60px;right:120px;display:flex;align-items:center;gap:14px;opacity:.18">
+      <svg width="36" height="32" viewBox="0 0 60 52" fill="none" style="color:var(--ow)">
+        <path d="M8,52 L8,26 Q8,4 30,4 Q52,4 52,26 L52,52" stroke="currentColor" stroke-width="3.5" stroke-linecap="square"/>
+      </svg>
+      <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:var(--ow);letter-spacing:.06em">ARKO</div>
+    </div>
+  </div>
+
+  <div class="snum" style="color:rgba(244,241,234,.2)">14</div>
+</div>
+
+</div><!-- /deck -->
+
+
+<!-- NAV CONTROLS -->
+<div class="nav" id="nav">
+  <button class="nbtn" id="btnPrev" onclick="move(-1)">&#8592;</button>
+  <div class="nctr" id="ctr">01 / 14</div>
+  <button class="nbtn" id="btnNext" onclick="move(1)">&#8594;</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+function go(n) {
+  slides[cur].classList.remove('on');
+  cur = (n + total) % total;
+  slides[cur].classList.add('on');
+  document.getElementById('ctr').textContent =
+    String(cur + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+  document.getElementById('prog').style.width =
+    ((cur + 1) / total * 100) + '%';
+}
+
+function move(d) { go(cur + d); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') move(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   move(-1);
+});
+
+// Touch/swipe support
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 40) move(dx > 0 ? 1 : -1);
+});
+
+// Init progress
+go(0);
+</script>
